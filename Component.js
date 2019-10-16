@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/generic/app/AppComponent"],function(t){return t.extend("Ztestchart2.Ztestchart2.Component",{metadata:{manifest:"json"}})});

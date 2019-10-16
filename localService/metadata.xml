@@ -1,0 +1,54 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZTESTCHART_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="MainChart" sap:content-version="1">
+				<Key><PropertyRef Name="Rowlabels"/></Key><Property Name="Rowlabels" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Character Field Length = 10"
+					sap:creatable="false" sap:updatable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Char20" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Char20" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Ammount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"
+					sap:label="Net Value" sap:creatable="false" sap:updatable="false"/><Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false"
+					sap:updatable="false" sap:semantics="currency-code"/></EntityType>
+			<EntityType Name="ThirdChart" sap:content-version="1">
+				<Key><PropertyRef Name="Rowlabels"/></Key><Property Name="Rowlabels" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Character Field Length = 10"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Ammount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"
+					sap:label="Net Value" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:semantics="currency-code"/><Property Name="Status130" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"
+					sap:label="Net Value" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Status3130" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"
+					sap:label="Net Value" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Status91" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"
+					sap:label="Net Value" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Statusnextmonth" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"
+					sap:label="Net Value" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Statusthismonth" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"
+					sap:label="Net Value" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><NavigationProperty Name="ToSecond" Relationship="ZTESTCHART_SRV.ToSecond" FromRole="FromRole_ToSecond" ToRole="ToRole_ToSecond"/></EntityType>
+			<EntityType Name="SecondChart" sap:value-list="true" sap:semantics="aggregate" sap:content-version="1">
+				<Key><PropertyRef Name="Rowlabels"/></Key><Property Name="Rowlabels" Type="Edm.String" Nullable="false" sap:aggregation-role="dimension" sap:unicode="false" sap:label="Rowlabels"
+					sap:creatable="false" sap:updatable="false"/><Property Name="Ammount" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="3" sap:aggregation-role="measure" sap:unicode="false"
+					sap:label="Ammount" sap:creatable="false" sap:updatable="false"/><Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Waers" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Status130" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="3" sap:aggregation-role="measure" sap:unicode="false"
+					sap:label="Status130" sap:creatable="false" sap:updatable="false"/><Property Name="Status3130" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="3" sap:aggregation-role="measure" sap:unicode="false"
+					sap:label="Status3130" sap:creatable="false" sap:updatable="false"/><Property Name="Status91" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="3" sap:aggregation-role="measure" sap:unicode="false"
+					sap:label="Status91" sap:creatable="false" sap:updatable="false"/><Property Name="Statusnextmonth" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="3" sap:aggregation-role="measure"
+					sap:unicode="false" sap:label="Statusnextmonth" sap:creatable="false" sap:updatable="false"/><Property Name="Statusthismonth" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="3" sap:aggregation-role="measure"
+					sap:unicode="false" sap:label="Statusthismonth" sap:creatable="false" sap:updatable="false"/><NavigationProperty Name="ToThird" Relationship="ZTESTCHART_SRV.ToThird" FromRole="FromRole_ToThird" ToRole="ToRole_ToThird"/></EntityType>
+			<Association Name="ToThird" sap:content-version="1"><End Type="ZTESTCHART_SRV.SecondChart" Multiplicity="1" Role="FromRole_ToThird"/><End Type="ZTESTCHART_SRV.ThirdChart" Multiplicity="1" Role="ToRole_ToThird"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ToThird"><PropertyRef Name="Rowlabels"/></Principal>
+					<Dependent Role="ToRole_ToThird"><PropertyRef Name="Rowlabels"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ToSecond" sap:content-version="1"><End Type="ZTESTCHART_SRV.ThirdChart" Multiplicity="1" Role="FromRole_ToSecond"/><End Type="ZTESTCHART_SRV.SecondChart" Multiplicity="1" Role="ToRole_ToSecond"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ToSecond"><PropertyRef Name="Rowlabels"/></Principal>
+					<Dependent Role="ToRole_ToSecond"><PropertyRef Name="Rowlabels"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZTESTCHART_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="MainChartSet" EntityType="ZTESTCHART_SRV.MainChart" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="ThirdChartSet" EntityType="ZTESTCHART_SRV.ThirdChart" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="SecondChartSet" EntityType="ZTESTCHART_SRV.SecondChart" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="ToThirdSet" Association="ZTESTCHART_SRV.ToThird" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:content-version="1"><End EntitySet="SecondChartSet" Role="FromRole_ToThird"/><End EntitySet="ThirdChartSet" Role="ToRole_ToThird"/></AssociationSet>
+				<AssociationSet Name="ToSecondSet" Association="ZTESTCHART_SRV.ToSecond" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:content-version="1"><End EntitySet="ThirdChartSet" Role="FromRole_ToSecond"/><End EntitySet="SecondChartSet" Role="ToRole_ToSecond"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZTESTCHART_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZTESTCHART_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
